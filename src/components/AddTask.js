@@ -2,10 +2,11 @@ import React from 'react'
 
 class AddTask extends React.Component{
 
+
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.onAddTask(this.newTask.value)
-        this.props.history.push('/')//Permet de rediriger l'utilisateur vers la racine
+        this.props.history.push('/')
     }
 
     render(){
@@ -27,4 +28,3 @@ class AddTask extends React.Component{
 }
 
 export default AddTask
-//ref permet de récuperer des données du formulaire
