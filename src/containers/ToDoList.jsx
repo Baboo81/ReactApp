@@ -3,11 +3,12 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Task from "../components/Task"
 import { useForm } from "react-hook-form"
+import style from './todolist.module.css'
 //import { Form } from 'react-bootstrap'
 
 const ToDoList = () => {
     const [tasks, setTasks] = useState([
-        { id: 1, name: "Faire la vaisselle", description: "Aude t'abuse ça traine depuis 3 jours là ", priority: "urgent", complete: false },
+        { id: 1, name: "Faire l'entretien du vélo", description: "Chris, ça fait 100km que la chaîne couine !", priority: "urgent", complete: false },
         { id: 2, name: "Faire les courses", description: "Fajitas party (+ apéro (bcp) ) avec les collègues", priority: "normal", complete: true },
     ])
 
@@ -49,37 +50,38 @@ const ToDoList = () => {
     }
 
     return (
-        <div className="d-flex justify-content-between" style={{ width: "70vw", margin: "auto" }}>
-            <div style={{ width: "45%" }}>
-                <h2>Ajouter une nouvelle tâche</h2>
-                <Form onSubmit={handleSubmit(addTask)}>
-                    <Form.Group className="mb-3" controlId="name">
-                        <Form.Label>Nom</Form.Label>
-                        <Form.Control type="text" aria-describedby="nameError" {...register("name", { required: true })} />
-                        {(errors.name?.type === "required") && <Form.Text className="text-danger" id="nameError" >
-                            Veuillez entrer un nom
-                        </Form.Text>}
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="description">
-                        <Form.Label>Description</Form.Label>
-                        <Form.Control as="textarea" {...register("description")} />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="priorite">
-                        <Form.Label>Priorité</Form.Label>
-                        <Form.Select aria-describedby="priorityError" {...register("priority", { required: true })}>
-                            <option value=''>Choisir priorité</option>
-                            <option value="urgent">Urgent</option>
-                            <option value="normal">Normal</option>
-                            <option value="bas">Bas</option>
-                        </Form.Select>
-                        {(errors.priority?.type === "required") && <Form.Text className="text-danger" id="priorityError" >
-                            Veuillez selectionner une priorité
-                        </Form.Text>}
-                    </Form.Group>
-                    <Button variant="primary" type="submit">Ajouter la tâche</Button>
-                </Form>
-            </div>
-            <div style={{ width: "45%" }}>
+            
+                <div className="d-flex justify-content-between"  style={{ width: "70vw", margin: "auto" }}>
+                    <div style={{ width: "45%" }}>
+                        <h2>Ajouter une nouvelle tâche</h2>
+                        <Form onSubmit={handleSubmit(addTask)}>
+                            <Form.Group className="mb-3" controlId="name">
+                                <Form.Label>Nom</Form.Label>
+                                <Form.Control type="text" aria-describedby="nameError" {...register("name", { required: true })} />
+                                {(errors.name?.type === "required") && <Form.Text className="text-danger" id="nameError" >
+                                    Veuillez entrer un nom
+                                </Form.Text>}
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="description">
+                                <Form.Label>Description</Form.Label>
+                                <Form.Control as="textarea" {...register("description")} />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="priorite">
+                                <Form.Label>Priorité</Form.Label>
+                                <Form.Select aria-describedby="priorityError" {...register("priority", { required: true })}>
+                                    <option value=''>Choisir priorité</option>
+                                    <option value="urgent">Urgent</option>
+                                    <option value="normal">Normal</option>
+                                    <option value="bas">Bas</option>
+                                </Form.Select>
+                                {(errors.priority?.type === "required") && <Form.Text className="text-danger" id="priorityError" >
+                                    Veuillez selectionner une priorité
+                                </Form.Text>}
+                            </Form.Group>
+                            <Button variant="primary" type="submit">Ajouter la tâche</Button>
+                        </Form>
+                    </div>
+                    <div style={{ width: "45%" }}>
 
 
                 <h2>Listes des tâches</h2>
